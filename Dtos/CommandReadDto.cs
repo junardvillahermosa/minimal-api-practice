@@ -1,6 +1,6 @@
 namespace SixMinApi.Dtos
 {
-    public class CommandDto
+    public class CommandReadDto
     {
         public int Id { get; set; }
         
