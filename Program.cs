@@ -53,7 +53,7 @@ app.MapGet("api/v1/commands/{id}", async (ICommandRepo repo, IMapper mapper, int
     return Results.NotFound();
 });
 
-//POST
+//POST REQUEST
 app.MapPost("api/v1/commands", async (ICommandRepo repo, IMapper mapper, CommandCreateDto cmdCreateDto) => {
     var commandModel = mapper.Map<Command>(cmdCreateDto);
 
@@ -66,7 +66,7 @@ app.MapPost("api/v1/commands", async (ICommandRepo repo, IMapper mapper, Command
 });
 
 
-//UPDATE
+//UPDATE REQUEST
 app.MapPut("api/v1/commands/{id}", async (ICommandRepo repo, IMapper mapper, int id, CommandUpdateDto cmdUpdateDto) => {
     var command = await repo.GetCommandById(id);
 
@@ -77,6 +77,24 @@ app.MapPut("api/v1/commands/{id}", async (ICommandRepo repo, IMapper mapper, int
     mapper.Map(cmdUpdateDto, command);
 
     await repo.SaveChanges();
+
+    return Results.NoContent();
+});
+
+//DELETE REQUEST
+app.MapDelete("api/v1/commands/{id}", async (ICommandRepo repo, IMapper mapper, int id) => {
+    var command = await repo.GetCommandById(id);
+
+    if (command == null)
+    {
+        return Results.NotFound();
+    }
+    repo.DeleteCommand(command);
+
+    await repo.SaveChanges();
+
+    return Results.NoContent();
+
 });
 
 
