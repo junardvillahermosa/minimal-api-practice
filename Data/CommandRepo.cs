@@ -7,7 +7,7 @@ namespace SixMinApi.Data
 {
     public class CommandRepo : ICommandRepo //Implement Interface
     {
-        private AppDbContext _context; //Private read-only field
+        private readonly AppDbContext _context; //Private read-only field
 
         //Create constructors 
         public CommandRepo(AppDbContext context) //parameters
@@ -21,7 +21,7 @@ namespace SixMinApi.Data
             if(cmd == null){
                 throw new ArgumentNullException(nameof(cmd));
             }
-            await _context.AddAsync(cmd);
+            await _context.Commands!.AddAsync(cmd);
         }
 
         public void DeleteCommand(Command cmd)
@@ -36,13 +36,13 @@ namespace SixMinApi.Data
         public async Task<IEnumerable<Command>> GetAllCommands()
         {
             //throw new NotImplementedException();
-            return await _context.Commands.ToListAsync();
+            return await _context.Commands!.ToListAsync();
         }
 
         public async Task<Command?> GetCommandById(int id)
         {
             //throw new NotImplementedException();
-            return await _context.Commands.FirstOrDefaultAsync(c => c.Id == id);
+            return await _context.Commands!.FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task SaveChanges()

@@ -11,6 +11,7 @@ namespace SixMinApi.Data
         }
 
         public DbSet<Command> Commands => Set<Command>();
+        public DbSet<Platform> Platforms => Set<Platform>();
         
     }
 }
