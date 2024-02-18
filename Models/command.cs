@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using SixMinApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -13,11 +14,13 @@ namespace SixMinApi.Models
         public string? HowTo { get; set; }
 
         [Required]
-        [MaxLength(5)]
-        public string? Platform { get; set; }
-
-        [Required]
         public string? CommandLine { get; set; }
+
+        //Foreign key property referencing the primary key in the Platform entity/model
+        public int? PlatformId { get; set; }
+
+        //Navigation Property
+        public Platform? Platform { get; set; }
 
     }
 }

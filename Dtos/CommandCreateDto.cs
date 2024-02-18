@@ -8,8 +8,7 @@ namespace SixMinApi.Dtos
         public string? HowTo { get; set; }
 
         [Required]
-        [MaxLength(5)]
-        public string? Platform { get; set; }
+        public int PlatformId { get; set; } // Updated to represent the foreign key
 
         [Required]
         public string? CommandLine { get; set; }

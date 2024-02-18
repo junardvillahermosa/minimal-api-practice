@@ -55,6 +55,8 @@ namespace SixMinApi.Data
                 existingCommand.HowTo = cmd.HowTo;
                 existingCommand.Platform = cmd.Platform;
                 existingCommand.CommandLine = cmd.CommandLine;
+                existingCommand.PlatformId = cmd.PlatformId;
+
 
                 // Mark the entity as modified to ensure it gets updated in the database
                 _context.Entry(existingCommand).State = EntityState.Modified;

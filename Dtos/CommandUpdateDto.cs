@@ -8,8 +8,11 @@ namespace SixMinApi.Dtos
         public string? HowTo { get; set; }
 
         [Required]
-        [MaxLength(5)]
-        public string? Platform { get; set; }
+        public int PlatformId { get; set; } // Include PlatformId to represent the relationship
+
+        //  [Required]
+        //  [MaxLength(5)]
+        //  public string? Platform { get; set; }
 
         [Required]
         public string? CommandLine { get; set; }
