@@ -4,7 +4,6 @@ namespace SixMinApi.Dtos
 {
     public class PlatformUpdateDto
     {
-        public string? Platform { get; set; }
-
+        public string? PlatformName { get; set; }
     }
 }

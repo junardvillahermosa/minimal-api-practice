@@ -98,5 +98,21 @@ namespace SixMinApi.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCommand(int id)
+        {
+            var commandModelFromRepo = await _repo.GetCommandById(id);
+
+            if (commandModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repo.DeleteCommand(commandModelFromRepo);
+            await _repo.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

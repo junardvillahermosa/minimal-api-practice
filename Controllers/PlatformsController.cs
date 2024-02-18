@@ -101,6 +101,22 @@ namespace SixMinApi.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeletePlatform(int id)
+        {
+            var platformModelFromRepo = await _repo.GetPlatformById(id);
+
+            if (platformModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _repo.DeletePlatform(platformModelFromRepo);
+            await _repo.SaveChanges();
+
+            return NoContent();
+        }
+
 
 
     }
