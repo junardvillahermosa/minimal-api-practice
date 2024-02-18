@@ -9,7 +9,10 @@ namespace SixMinApi.Profiles
         public PlatformsProfile()
         {
             // Source -> Target 
+            CreateMap<Platform, PlatformReadDto>();
             CreateMap<PlatformCreateDto, Platform>();
+            CreateMap<PlatformUpdateDto, Platform>(); 
+            CreateMap<Platform, PlatformUpdateDto>();
         }
     }
 }

@@ -57,6 +57,23 @@ namespace SixMinApi.Controllers
             return CreatedAtRoute(nameof(GetCommandById), new { Id = cmdReadDto}, cmdReadDto);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateCommand(int id, CommandUpdateDto cmdUpdateDto)
+        {
+            var commandModelFromRepo = await _repo.GetCommandById(id);
+
+            if (commandModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(cmdUpdateDto, commandModelFromRepo);
+
+            await _repo.SaveChanges();
+
+            return NoContent();
+        }
+
         //PATCH api/v1/commands/{id}
         [HttpPatch("{id}")]
         public async Task<ActionResult> PartialCommandUpdate(int id, JsonPatchDocument<CommandUpdateDto> patchDoc)

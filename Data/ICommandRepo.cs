@@ -8,6 +8,7 @@ namespace SixMinApi.Data
         Task<Command?> GetCommandById(int id);
         Task<IEnumerable<Command>> GetAllCommands();
         Task CreateCommand(Command cmd);
+        Task UpdateCommand(Command cmd);
 
         void DeleteCommand(Command cmd);
 

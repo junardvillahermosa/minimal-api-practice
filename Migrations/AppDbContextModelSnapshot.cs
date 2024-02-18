@@ -46,6 +46,23 @@ namespace SixMinApi.Migrations
 
                     b.ToTable("Commands");
                 });
+
+            modelBuilder.Entity("SixMinApi.Models.Platform", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PlatformName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Platforms");
+                });
 #pragma warning restore 612, 618
         }
     }

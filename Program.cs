@@ -27,6 +27,7 @@ sqlConBuilder.Password = builder.Configuration["Password"];
 
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(sqlConBuilder.ConnectionString));
 builder.Services.AddScoped<ICommandRepo, CommandRepo>();
+builder.Services.AddScoped<IPlatformRepo, PlatformRepo>();
 builder.Services.AddScoped<TestAsyncActionFilter>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

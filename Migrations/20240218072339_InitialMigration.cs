@@ -24,6 +24,19 @@ namespace SixMinApi.Migrations
                 {
                     table.PrimaryKey("PK_Commands", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Platforms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PlatformName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Platforms", x => x.Id);
+                });
         }
 
         /// <inheritdoc />
@@ -31,6 +44,9 @@ namespace SixMinApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Commands");
+
+            migrationBuilder.DropTable(
+                name: "Platforms");
         }
     }
 }

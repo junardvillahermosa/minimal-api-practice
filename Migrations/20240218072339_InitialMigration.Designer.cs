@@ -11,7 +11,7 @@ using SixMinApi.Data;
 namespace SixMinApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240216052343_InitialMigration")]
+    [Migration("20240218072339_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -48,6 +48,23 @@ namespace SixMinApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Commands");
+                });
+
+            modelBuilder.Entity("SixMinApi.Models.Platform", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("PlatformName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Platforms");
                 });
 #pragma warning restore 612, 618
         }

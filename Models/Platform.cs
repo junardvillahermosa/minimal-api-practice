@@ -4,7 +4,7 @@ using SixMinApi.Binders;
 
 
 namespace SixMinApi.Models{
-    [ModelBinder(BinderType = typeof(PlatformModelBinder))]
+   // [ModelBinder(BinderType = typeof(PlatformModelBinder))]
     public class Platform
     {
         [Key]
